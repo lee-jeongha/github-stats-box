@@ -1,0 +1,18 @@
+name: Update gist
+on:
+  repository_dispatch:
+    types: [build-event]
+  schedule:
+    - cron: "0 0 * * *"
+jobs:
+  update-gist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update gist
+        uses: lee-jeongha/github-stats-box@master
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIST_ID: 5f9cd49279f644ff89730054d3e4a083
+          TIMEZONE: Asia/Seoul
+          ALL_COMMITS: true
+          K_FORMAT: true
